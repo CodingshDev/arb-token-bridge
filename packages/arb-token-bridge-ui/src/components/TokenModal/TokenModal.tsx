@@ -80,25 +80,25 @@ const TokenRow = ({
     <button
       onClick={selectToken}
       type="button"
-      className="flex items-center justify-between border border-gray-300 rounded-md px-6 py-3 bg-white hover:bg-gray-100"
+      className="flex items-center justify-between px-6 py-3 bg-white border border-gray-300 rounded-md hover:bg-gray-100"
     >
       <div className="flex items-center">
         {tokenLogo ? (
           <img
             src={tokenLogo}
             alt="logo"
-            className="rounded-full w-8 h-8 mr-4"
+            className="w-8 h-8 mr-4 rounded-full"
           />
         ) : (
-          <div className="rounded-full w-8 h-8 mr-4 bg-navy" />
+          <div className="w-8 h-8 mr-4 rounded-full bg-navy" />
         )}
 
-        <p className="text-base leading-6 font-bold text-gray-900">
+        <p className="text-base font-bold leading-6 text-gray-900">
           {tokenName}
         </p>
       </div>
 
-      <p className="flex items-center text-base leading-6 font-medium text-gray-900">
+      <p className="flex items-center text-base font-medium leading-6 text-gray-900">
         {balance ? (
           // @ts-ignore
           +formatUnits(balance, token?.decimals || 18)
@@ -124,6 +124,8 @@ export const TokenModalBody = ({
   const bridge = useContext(BridgeContext)
   const [confirmationOpen, setConfirmationOpen] = useState(false)
   const [blacklistedOpen, setBlacklistedOpen] = useState(false)
+
+  console.log(blacklistedOpen)
 
   const {
     app: {
@@ -238,7 +240,7 @@ export const TokenModalBody = ({
       <form onSubmit={addNewToken} className="flex flex-col">
         <label
           htmlFor="newTokenAddress"
-          className="text-sm leading-5 font-medium text-gray-700 mb-1"
+          className="mb-1 text-sm font-medium leading-5 text-gray-700"
         >
           Search for token
         </label>
@@ -248,7 +250,7 @@ export const TokenModalBody = ({
             value={newToken}
             onChange={e => setNewToken(e.target.value)}
             placeholder="Token name, symbol, or address"
-            className="text-dark-blue shadow-sm border border-gray-300 rounded-md px-2 w-full h-10"
+            className="w-full h-10 px-2 border border-gray-300 rounded-md shadow-sm text-dark-blue"
           />
 
           {networkID === '4' || networkID === '421611' ? (
@@ -256,7 +258,7 @@ export const TokenModalBody = ({
               variant="white"
               type="submit"
               disabled={newToken === '' || !isAddress(newToken)}
-              // className="flex items-center justify-center bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 p-2 min-w-16"
+              // className="flex items-center justify-center p-2 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-100 min-w-16"
             >
               {isAddingToken ? (
                 <Loader

@@ -27,8 +27,11 @@ interface Networks {
   [id: string]: Network
 }
 
-export const MAINNET_WHITELIST_ADDRESS =
-  '0xD485e5c28AA4985b23f6DF13dA03caa766dcd459'
+export const MAINNET_WHITELIST_ADDRESS = [
+  '0xD485e5c28AA4985b23f6DF13dA03caa766dcd459',
+  '0x82155ab6b6c1113cfb352c7573b010a88f5974bd', // SARCO on Arbitrium
+  '0x7697b462a7c4ff5f8b55bdbc2f4076c2af9cf51a' // SARCO on Mainnet
+]
 
 const mainnetBridge: TokenBridge = {
   l1Address: '0x72Ce9c846789fdB6fC1f34aC4AD25Dd9ef7031ef',
